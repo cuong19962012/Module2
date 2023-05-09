@@ -109,47 +109,11 @@ public class NumberToWords {
         int number = scanner.nextInt();
         String s = "";
         if (number < 10 && number > -1) {
-            switch (number) {
-                case 0:
-                    s = "Zero";
-                    break;
-                case 1:
-                    s = "One";
-                    break;
-                case 2:
-                    s = "Two";
-                    break;
-                case 3:
-                    s = "Three";
-                    break;
-                case 4:
-                    s = "Four";
-                    break;
-                case 5:
-                    s = "Five";
-                    break;
-                case 6:
-                    s = "Six";
-                    break;
-                case 7:
-                    s = "Seven";
-                    break;
-                case 8:
-                    s = "Eight";
-                    break;
-                case 9:
-                    s = "Nine";
-                    break;
-                case 10:
-                    s = "Ten";
-                    break;
-                default:
-                    s = "out of ability";
-            }
+            s = ones(number);
         } else {
-            int ones = number % 10;
+            int ones;
             if (number < 20) {
-                numberSmaller20(ones);
+                s = numberSmaller20(number);
             } else {
                 String firstNumber = "";
                 String secondNumber = "";
