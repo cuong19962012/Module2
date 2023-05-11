@@ -12,24 +12,24 @@ public class QuadraticEquation {
     }
 
     public double getA() {
-        return this.a;
+        return a;
     }
 
     public double getB() {
-        return this.b;
+        return b;
     }
 
     public double getC() {
-        return this.c;
+        return c;
     }
 
     public double getDiscriminant() {
-        return Math.pow(b, 2) - (4 * a * c);
+        return Math.pow(getB(), 2) - (4 * getA() * getC());
     }
 
     public double getRoot1() {
         if (getDiscriminant() >= 0) {
-            return (-b + Math.pow(getDiscriminant(), 0.5)) / 2 * a;
+            return (-getB() + Math.pow(getDiscriminant(), 0.5)) / 2 * getA();
         } else {
             return 0;
         }
@@ -37,7 +37,7 @@ public class QuadraticEquation {
 
     public double getRoot2() {
         if (getDiscriminant() >= 0) {
-            return (-b - Math.pow(getDiscriminant(), 0.5)) / 2 * a;
+            return (-getB() - Math.pow(getDiscriminant(), 0.5)) / 2 * getA();
         } else {
             return 0;
         }

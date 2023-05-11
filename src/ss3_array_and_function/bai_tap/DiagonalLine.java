@@ -30,11 +30,7 @@ public class DiagonalLine {
         }
         int total = 0;
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (j == i) {
-                    total += matrix[i][j];
-                }
-            }
+            total += matrix[i][i];
         }
         System.out.print("Result is: " + total);
     }
