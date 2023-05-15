@@ -1,7 +1,5 @@
 package ss6_inheritance.thuc_hanh;
 
-import ss5_access_modifier.bai_tap.access_modifier.Cricle;
-
 public class Circle extends Shape {
     private double radius = 1.0;
 

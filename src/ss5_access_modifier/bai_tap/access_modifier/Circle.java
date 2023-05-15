@@ -1,14 +1,14 @@
 package ss5_access_modifier.bai_tap.access_modifier;
 
-public class Cricle {
+public class Circle {
     private double radius = 1.0;
     private String color = "Red";
 
-    Cricle() {
+    Circle() {
 
     }
 
-    Cricle(double radius) {
+    Circle(double radius) {
         this.radius = radius;
     }
 
@@ -17,6 +17,6 @@ public class Cricle {
     }
 
     public double getArea() {
-        return radius * 3.14;
+        return radius * radius * 3.14;
     }
 }
