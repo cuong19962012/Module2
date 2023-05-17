@@ -1,6 +1,4 @@
-package ss10_DSA.thuc_hanh.implements_easy_linked_list;
-
-import javax.xml.soap.Node;
+package ss10_list.thuc_hanh.implements_easy_linked_list;
 
 public class MyLinkedList {
     private Node head;

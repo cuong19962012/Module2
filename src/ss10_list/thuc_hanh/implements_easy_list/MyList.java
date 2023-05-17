@@ -1,4 +1,4 @@
-package ss10_DSA.thuc_hanh.implements_easy_list;
+package ss10_list.thuc_hanh.implements_easy_list;
 
 
 import java.util.Arrays;

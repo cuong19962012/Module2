@@ -1,4 +1,4 @@
-package ss10_DSA.thuc_hanh.implements_easy_linked_list;
+package ss10_list.thuc_hanh.implements_easy_linked_list;
 
 public class TestMyLinkedList {
     public static void main(String[] args) {
