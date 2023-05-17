@@ -5,18 +5,30 @@ public class TennisGame {
     private static final int ADD_ADVANTAGE_SCORE = 1;
     private static final int WIN_DISTANCE_ADVANTAGE_SCORE = 2;
     private static final int MINUS_ADVANTAGE_SCORE = -1;
+    private static final int SCORE_OF_0 = 0;
+    private static final int SCORE_OF_15 = 1;
+    private static final int SCORE_OF_30 = 2;
+    private static final int SCORE_OF_40 = 3;
+    private static final int ADVANTAGE_START_SCORE = 4;
     private static final String CALL_0_SCORE = "Love";
     private static final String CALL_1_SCORE = "Fifteen";
     private static final String CALL_2_SCORE = "Thirty";
     private static final String CALL_3_SCORE = "Forty";
     private static final String CALL_DEUCE = "Deuce";
 
-    public static String getScoreIfDeuce(String firstPlayerName, String secondPlayerName, int firstPlayerScore, int secondPlayerScore) {
+    /**
+     *
+     * @param firstPlayerScore
+     * @param secondPlayerScore
+     * @return Score
+     *
+     */
+    public static String getScore(int firstPlayerScore, int secondPlayerScore) {
         String score = "";
         int scoreIfNotDeuce = 0;
         if (firstPlayerScore == secondPlayerScore) {
             score = getScoreIfDeuce(firstPlayerScore);
-        } else if (firstPlayerScore >= 4 || secondPlayerScore >= 4) {
+        } else if (firstPlayerScore >= ADVANTAGE_START_SCORE || secondPlayerScore >= ADVANTAGE_START_SCORE) {
             int advantageScore = firstPlayerScore - secondPlayerScore;
             if (advantageScore == ADD_ADVANTAGE_SCORE)
                 score = "Advantage player1";
@@ -40,37 +52,48 @@ public class TennisGame {
         return score;
     }
 
+    /**
+     *
+     * @param score
+     * @param tempScore
+     * @return StringScore
+     */
     private static String getScoreIfNotDeuce(String score, int tempScore) {
         switch (tempScore) {
-            case 0:
+            case SCORE_OF_0:
                 score += CALL_0_SCORE;
                 break;
-            case 1:
+            case SCORE_OF_15:
                 score += CALL_1_SCORE;
                 break;
-            case 2:
+            case SCORE_OF_30:
                 score += CALL_2_SCORE;
                 break;
-            case 3:
+            case SCORE_OF_40:
                 score += CALL_3_SCORE;
                 break;
         }
         return score;
     }
 
+    /**
+     *
+     * @param playerScore
+     * @return StringScore
+     */
     private static String getScoreIfDeuce(int playerScore) {
         String score;
         switch (playerScore) {
-            case 0:
+            case SCORE_OF_0:
                 score = CALL_0_SCORE + "-All";
                 break;
-            case 1:
+            case SCORE_OF_15:
                 score = CALL_1_SCORE + "-All";
                 break;
-            case 2:
+            case SCORE_OF_30:
                 score = CALL_2_SCORE + "-All";
                 break;
-            case 3:
+            case SCORE_OF_40:
                 score = CALL_3_SCORE + "-All";
                 break;
             default:
