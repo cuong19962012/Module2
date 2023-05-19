@@ -90,11 +90,8 @@ public class MyList<E> {
     }
 
     public void ensureCapacity(int minCapacity) {
-        if (minCapacity < size) {
-            throw new RuntimeException();
-        } else {
-            elements = Arrays.copyOf(elements, minCapacity);
-        }
+        int newSize = size + minCapacity;
+        elements = Arrays.copyOf(elements, newSize);
     }
 
     public void clear() {

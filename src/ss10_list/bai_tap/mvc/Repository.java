@@ -2,7 +2,7 @@ package ss10_list.bai_tap.mvc;
 
 import java.util.ArrayList;
 
-public class Repository {
+public class Repository implements IRepository {
     //int id, String name, String birthday, boolean gender, String classes, int score
     private static ArrayList<Person> data = new ArrayList<>();
 
@@ -14,6 +14,26 @@ public class Repository {
         data.add(student1);
         data.add(student2);
         data.add(student3);
+        data.add(teacher1);
+    }
+
+    @Override
+    public Person[] getData() {
+        Person[] newData = new Person[data.size()];
+        for (int i = 0; i < data.size(); i++) {
+            newData[i] = data.get(i);
+        }
+        return newData;
+    }
+
+    public void addData(Person o) {
+        data.add(o);
+    }
+
+    public Person deletedData(int index) {
+        Person temp = data.get(index);
+        data.remove(index);
+        return temp;
     }
 
 }
