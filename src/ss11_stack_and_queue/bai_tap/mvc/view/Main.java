@@ -1,7 +1,7 @@
-package ss11_stack_and_queue.mvc.view;
+package ss11_stack_and_queue.bai_tap.mvc.view;
 
 
-import ss11_stack_and_queue.mvc.controller.PersonController;
+import ss11_stack_and_queue.bai_tap.mvc.controller.PersonController;
 
 public class Main {
     public static void main(String[] args) {

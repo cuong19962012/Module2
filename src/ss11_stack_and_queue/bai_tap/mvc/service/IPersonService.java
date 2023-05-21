@@ -1,6 +1,4 @@
-package ss11_stack_and_queue.mvc.service;
-
-import ss11_stack_and_queue.mvc.model.Person;
+package ss11_stack_and_queue.bai_tap.mvc.service;
 
 public interface IPersonService{
 

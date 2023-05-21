@@ -1,4 +1,4 @@
-package ss11_stack_and_queue.mvc.model;
+package ss11_stack_and_queue.bai_tap.mvc.model;
 
 public class Student extends Person {
     private String classes;

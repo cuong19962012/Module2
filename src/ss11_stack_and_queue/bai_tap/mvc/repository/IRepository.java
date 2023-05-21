@@ -1,6 +1,6 @@
-package ss11_stack_and_queue.mvc.repository;
+package ss11_stack_and_queue.bai_tap.mvc.repository;
 
-import ss11_stack_and_queue.mvc.model.Person;
+import ss11_stack_and_queue.bai_tap.mvc.model.Person;
 
 import java.util.ArrayList;
 

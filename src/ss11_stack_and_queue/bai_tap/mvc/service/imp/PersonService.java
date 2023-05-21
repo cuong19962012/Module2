@@ -1,10 +1,10 @@
-package ss11_stack_and_queue.mvc.service.imp;
+package ss11_stack_and_queue.bai_tap.mvc.service.imp;
 
-import ss11_stack_and_queue.mvc.model.Person;
-import ss11_stack_and_queue.mvc.model.Student;
-import ss11_stack_and_queue.mvc.model.Teacher;
-import ss11_stack_and_queue.mvc.repository.imp.PersonRepository;
-import ss11_stack_and_queue.mvc.service.IPersonService;
+import ss11_stack_and_queue.bai_tap.mvc.model.Person;
+import ss11_stack_and_queue.bai_tap.mvc.model.Student;
+import ss11_stack_and_queue.bai_tap.mvc.model.Teacher;
+import ss11_stack_and_queue.bai_tap.mvc.repository.imp.PersonRepository;
+import ss11_stack_and_queue.bai_tap.mvc.service.IPersonService;
 
 import java.util.Scanner;
 

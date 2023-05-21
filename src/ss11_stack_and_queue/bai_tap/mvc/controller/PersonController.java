@@ -1,6 +1,6 @@
-package ss11_stack_and_queue.mvc.controller;
+package ss11_stack_and_queue.bai_tap.mvc.controller;
 
-import ss11_stack_and_queue.mvc.service.imp.PersonService;
+import ss11_stack_and_queue.bai_tap.mvc.service.imp.PersonService;
 
 import java.util.Scanner;
 

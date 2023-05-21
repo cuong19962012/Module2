@@ -1,4 +1,4 @@
-package ss11_stack_and_queue.mvc.model;
+package ss11_stack_and_queue.bai_tap.mvc.model;
 
 public abstract class Person {
     private  int id;

@@ -1,9 +1,9 @@
-package ss11_stack_and_queue.mvc.repository.imp;
+package ss11_stack_and_queue.bai_tap.mvc.repository.imp;
 
-import ss11_stack_and_queue.mvc.model.Person;
-import ss11_stack_and_queue.mvc.model.Student;
-import ss11_stack_and_queue.mvc.model.Teacher;
-import ss11_stack_and_queue.mvc.repository.IRepository;
+import ss11_stack_and_queue.bai_tap.mvc.model.Person;
+import ss11_stack_and_queue.bai_tap.mvc.model.Student;
+import ss11_stack_and_queue.bai_tap.mvc.model.Teacher;
+import ss11_stack_and_queue.bai_tap.mvc.repository.IRepository;
 
 import java.util.ArrayList;
 import java.util.Iterator;
