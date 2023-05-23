@@ -1,6 +1,6 @@
-package ss12_java_collection_framework.bai_tap.product_management.product_repository;
+package ss12_java_collection_framework.bai_tap.product_management.repository;
 
-import ss12_java_collection_framework.bai_tap.product_management.product_model.ProductModel;
+import ss12_java_collection_framework.bai_tap.product_management.model.ProductModel;
 
 import java.util.Comparator;
 

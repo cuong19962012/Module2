@@ -1,4 +1,4 @@
-package ss12_java_collection_framework.bai_tap.product_management.product_model;
+package ss12_java_collection_framework.bai_tap.product_management.model;
 
 public class ProductModel {
     private int id;
