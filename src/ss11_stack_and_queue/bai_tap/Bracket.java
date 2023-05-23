@@ -17,10 +17,11 @@ public class Bracket {
                     bracketCorrect = false;
                     break;
                 }
-                if (stack.pop() == arr[i]) {
-                    bracketCorrect = false;
-                    break;
-                }
+//                if (stack.pop() == arr[i]) {
+//                    bracketCorrect = false;
+//                    break;
+//                }
+                stack.pop();
             }
         }
         if (stack.isEmpty() && bracketCorrect)
