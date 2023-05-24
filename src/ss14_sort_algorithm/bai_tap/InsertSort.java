@@ -21,6 +21,7 @@ public class InsertSort {
                 arr[j + 1] = arr[j];
             }
             arr[j + 1] = x;
+            System.out.println(Arrays.toString(arr));
         }
     }
 }

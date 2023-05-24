@@ -27,6 +27,7 @@ public class IllustrationInsertSort {
             System.out.println("Insert Value " + x + " In " + " Index " + (j + 1));
             /*May be sorted or not sorted, but always correct*/
             arr[j + 1] = x;
+            System.out.println("Array After Insert: "+Arrays.toString(arr));
         }
         System.out.println("End Sort <=");
     }
