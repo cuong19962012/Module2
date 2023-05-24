@@ -1,4 +1,4 @@
-package ss12_java_collection_framework.bai_tap.product_management.Main;
+package ss12_java_collection_framework.bai_tap.product_management.view;
 
 import ss12_java_collection_framework.bai_tap.product_management.controller.ProductController;
 

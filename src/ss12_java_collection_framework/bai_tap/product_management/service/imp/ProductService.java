@@ -1,8 +1,8 @@
-package ss12_java_collection_framework.bai_tap.product_management.product_service.imp;
+package ss12_java_collection_framework.bai_tap.product_management.service.imp;
 
 import ss12_java_collection_framework.bai_tap.product_management.model.ProductModel;
 import ss12_java_collection_framework.bai_tap.product_management.repository.imp.ProductRepository;
-import ss12_java_collection_framework.bai_tap.product_management.product_service.IProductService;
+import ss12_java_collection_framework.bai_tap.product_management.service.IProductService;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package ss12_java_collection_framework.bai_tap.product_management.product_service;
+package ss12_java_collection_framework.bai_tap.product_management.service;
 
 public interface IProductService {
     void display();

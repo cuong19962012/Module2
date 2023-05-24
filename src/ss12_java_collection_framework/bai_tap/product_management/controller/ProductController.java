@@ -1,6 +1,6 @@
 package ss12_java_collection_framework.bai_tap.product_management.controller;
 
-import ss12_java_collection_framework.bai_tap.product_management.product_service.imp.ProductService;
+import ss12_java_collection_framework.bai_tap.product_management.service.imp.ProductService;
 
 import java.util.Scanner;
 
