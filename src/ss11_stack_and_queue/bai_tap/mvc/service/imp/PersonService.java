@@ -6,6 +6,7 @@ import ss11_stack_and_queue.bai_tap.mvc.model.Teacher;
 import ss11_stack_and_queue.bai_tap.mvc.repository.imp.PersonRepository;
 import ss11_stack_and_queue.bai_tap.mvc.service.IPersonService;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PersonService implements IPersonService {
@@ -28,30 +29,79 @@ public class PersonService implements IPersonService {
         int choice = Integer.parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
-                System.out.print("Nhập ID: ");
-                int idStudent = Integer.parseInt(scanner.nextLine());
+                int idStudent;
+                do {
+                    System.out.print("Nhập ID: ");
+                    try {
+                        idStudent = Integer.parseInt(scanner.nextLine());
+                        break;
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Nhập không đúng định dạng");
+                    }
+
+                } while (true);
                 System.out.print("Nhập Tên: ");
                 String nameStudent = scanner.nextLine();
-                System.out.print("Nhập Ngày Tháng Năm Sinh: ");
-                String birthdayStudent = scanner.nextLine();
-                System.out.print("Nhập Giới Tính: ");
-                boolean genderStudent = Boolean.parseBoolean(scanner.nextLine());
+                String birthdayStudent;
+                do {
+                    System.out.print("Nhập Ngày Tháng Năm Sinh: ");
+                    birthdayStudent = scanner.nextLine();
+                    String[] checkArr= birthdayStudent.split("");
+                    for (int i = 0; i < checkArr.length; i++) {
+
+                    }
+                    break;
+                } while (true);
+                boolean genderStudent;
+                do {
+                    System.out.print("Nhập Giới Tính: ");
+                    try {
+                        genderStudent = scanner.nextBoolean();
+                        break;
+                    } catch (InputMismatchException inputMismatchException) {
+                        System.out.println("Nhập không đúng định dạng");
+                    }
+                } while (true);
                 System.out.print("Nhập Lớp ");
                 String classes = scanner.nextLine();
-                System.out.print("Nhập Điểm ");
-                double score = scanner.nextDouble();
+                double score;
+                do {
+                    System.out.print("Nhập Điểm ");
+                    try {
+                        score = Double.parseDouble(scanner.nextLine());
+                        break;
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Nhập không đúng định dạng");
+                    }
+                } while (true);
                 Person student = new Student(idStudent, nameStudent, birthdayStudent, genderStudent, classes, score);
                 personRepository.addPerson(student);
                 break;
             case 2:
-                System.out.print("Nhập ID: ");
-                int idTeacher = Integer.parseInt(scanner.nextLine());
+                int idTeacher;
+                do {
+                    System.out.print("Nhập ID: ");
+                    try {
+                        idTeacher = Integer.parseInt(scanner.nextLine());
+                        break;
+                    } catch (NumberFormatException numberFormatException) {
+                        System.out.println("Nhập không đúng định dạng");
+                    }
+                } while (true);
                 System.out.print("Nhập Tên: ");
                 String nameTeacher = scanner.nextLine();
                 System.out.print("Nhập Ngày Tháng Năm Sinh: ");
                 String birthdayTeacher = scanner.nextLine();
-                System.out.print("Nhập Giới Tính: ");
-                boolean genderTeacher = Boolean.parseBoolean(scanner.nextLine());
+                boolean genderTeacher;
+                do {
+                    System.out.print("Nhập Giới Tính: ");
+                    try {
+                        genderTeacher = scanner.nextBoolean();
+                        break;
+                    } catch (InputMismatchException inputMismatchException) {
+                        System.out.println("Nhập không đúng định dạng");
+                    }
+                } while (true);
                 System.out.print("Nhập Chuyên Môn: ");
                 String technique = scanner.nextLine();
                 Person teacher = new Teacher(idTeacher, nameTeacher, birthdayTeacher, genderTeacher, technique);
