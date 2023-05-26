@@ -12,7 +12,7 @@ public class IllustrationBubbleSort {
         for (int i = 0; i < list.length; i++) {
             list[i] = scanner.nextInt();
         }
-        System.out.print("Your input list: ");
+        System.out.print("Your input.csv list: ");
         for (int i = 0; i < list.length; i++) {
             System.out.print(list[i] + "\t");
         }
