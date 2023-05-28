@@ -5,6 +5,7 @@ import ss11_stack_and_queue.bai_tap.mvc.model.Student;
 import ss11_stack_and_queue.bai_tap.mvc.model.Teacher;
 import ss11_stack_and_queue.bai_tap.mvc.repository.IRepository;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -48,5 +49,40 @@ public class PersonRepository implements IRepository {
     @Override
     public void deletePerson(int index) {
         data.remove(index);
+    }
+
+    @Override
+    public void writeData() {
+        final String COMA=",";
+        File fileStudent = new File("src/ss11_stack_and_queue/bai_tap/mvc/io_text/list_students.csv");
+        File fileTeacher = new File("src/ss11_stack_and_queue/bai_tap/mvc/io_text/list_teacher.csv");
+        try {
+            FileWriter fileWriterStudent = new FileWriter(fileStudent);
+            BufferedWriter bufferedWriterStudent = new BufferedWriter(fileWriterStudent);
+            FileWriter fileWriterTeacher = new FileWriter(fileTeacher);
+            BufferedWriter bufferedWriterTeacher = new BufferedWriter(fileWriterTeacher);
+            for (Person p : data) {
+                if (p instanceof Student) {
+                    //(1, "Loan", "27-06-1994", false, "C03", 7.3);
+                    String str = p.getId()+COMA+p.getName()+COMA+p.getBirthday()+COMA+p.isGender()+COMA+((Student) p).getClasses()+COMA+((Student) p).getScore();
+                    bufferedWriterStudent.write(str);
+                    bufferedWriterStudent.newLine();
+                } else {
+                    String str=p.getId()+COMA+p.getName()+COMA+p.getBirthday()+COMA+p.isGender()+COMA+((Teacher)p).getTechnique();
+                    bufferedWriterTeacher.write(str);
+                    bufferedWriterTeacher.newLine();
+                }
+            }
+            bufferedWriterTeacher.close();
+            bufferedWriterStudent.close();
+            fileWriterStudent.close();
+            fileWriterTeacher.close();
+        }
+        catch (FileNotFoundException fileNotFoundException){
+            System.out.println("Không tìm thấy File!!");
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

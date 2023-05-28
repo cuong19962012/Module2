@@ -6,8 +6,12 @@ import ss11_stack_and_queue.bai_tap.mvc.model.Teacher;
 import ss11_stack_and_queue.bai_tap.mvc.repository.imp.PersonRepository;
 import ss11_stack_and_queue.bai_tap.mvc.service.IPersonService;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import static java.lang.Integer.*;
 
 public class PersonService implements IPersonService {
     private static PersonRepository personRepository = new PersonRepository();
@@ -26,14 +30,14 @@ public class PersonService implements IPersonService {
         System.out.println("*** Lựa Chọn Thêm ***");
         System.out.println("1. Học Sinh");
         System.out.println("2. Giảng Viên");
-        int choice = Integer.parseInt(scanner.nextLine());
+        int choice = parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
                 int idStudent;
                 do {
                     System.out.print("Nhập ID: ");
                     try {
-                        idStudent = Integer.parseInt(scanner.nextLine());
+                        idStudent = parseInt(scanner.nextLine());
                         break;
                     } catch (NumberFormatException nfe) {
                         System.out.println("Nhập không đúng định dạng");
@@ -46,17 +50,30 @@ public class PersonService implements IPersonService {
                 do {
                     System.out.print("Nhập Ngày Tháng Năm Sinh: ");
                     birthdayStudent = scanner.nextLine();
-                    String[] checkArr= birthdayStudent.split("");
-                    for (int i = 0; i < checkArr.length; i++) {
-
+                    String[] checkArr = birthdayStudent.split("/");
+                    try {
+                        if (Integer.parseInt(checkArr[0]) < 0 || Integer.parseInt(checkArr[0]) > 31)
+                            throw new NumberFormatException();
+                        if (Integer.parseInt(checkArr[1]) < 0 || Integer.parseInt(checkArr[0]) > 12)
+                            throw new NumberFormatException();
+                        if (Integer.parseInt(checkArr[2]) < 1900 || Integer.parseInt(checkArr[0]) > 2015)
+                            throw new NumberFormatException();
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Nhập không đúng định dạng");
+                        continue;
+                    } catch (ArrayIndexOutOfBoundsException aioobe) {
+                        System.out.println("Nhập không đúng định dạng");
+                        continue;
                     }
-                    break;
+                    if (checkArr.length == 3)
+                        break;
+                    System.out.println("Không đúng định dạng");
                 } while (true);
                 boolean genderStudent;
                 do {
                     System.out.print("Nhập Giới Tính: ");
                     try {
-                        genderStudent = scanner.nextBoolean();
+                        genderStudent = Boolean.parseBoolean(scanner.nextLine());
                         break;
                     } catch (InputMismatchException inputMismatchException) {
                         System.out.println("Nhập không đúng định dạng");
@@ -82,7 +99,7 @@ public class PersonService implements IPersonService {
                 do {
                     System.out.print("Nhập ID: ");
                     try {
-                        idTeacher = Integer.parseInt(scanner.nextLine());
+                        idTeacher = parseInt(scanner.nextLine());
                         break;
                     } catch (NumberFormatException numberFormatException) {
                         System.out.println("Nhập không đúng định dạng");
@@ -90,13 +107,34 @@ public class PersonService implements IPersonService {
                 } while (true);
                 System.out.print("Nhập Tên: ");
                 String nameTeacher = scanner.nextLine();
-                System.out.print("Nhập Ngày Tháng Năm Sinh: ");
-                String birthdayTeacher = scanner.nextLine();
+                String birthdayTeacher;
+                do {
+                    System.out.print("Nhập Ngày Tháng Năm Sinh: ");
+                    birthdayTeacher = scanner.nextLine();
+                    String[] checkArr = birthdayTeacher.split("/");
+                    try {
+                        if (Integer.parseInt(checkArr[0]) < 0 || Integer.parseInt(checkArr[0]) > 31)
+                            throw new NumberFormatException();
+                        if (Integer.parseInt(checkArr[1]) < 0 || Integer.parseInt(checkArr[0]) > 12)
+                            throw new NumberFormatException();
+                        if (Integer.parseInt(checkArr[2]) < 1900 || Integer.parseInt(checkArr[0]) > 2015)
+                            throw new NumberFormatException();
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Nhập không đúng định dạng");
+                        continue;
+                    } catch (ArrayIndexOutOfBoundsException aioobe) {
+                        System.out.println("Nhập không đúng định dạng");
+                        continue;
+                    }
+                    if (checkArr.length == 3)
+                        break;
+                    System.out.println("Không đúng định dạng");
+                } while (true);
                 boolean genderTeacher;
                 do {
                     System.out.print("Nhập Giới Tính: ");
                     try {
-                        genderTeacher = scanner.nextBoolean();
+                        genderTeacher = Boolean.parseBoolean(scanner.nextLine());
                         break;
                     } catch (InputMismatchException inputMismatchException) {
                         System.out.println("Nhập không đúng định dạng");
@@ -125,6 +163,61 @@ public class PersonService implements IPersonService {
             }
         } else {
             System.out.println("Không Tìm Thấy ID");
+        }
+    }
+
+    @Override
+    public void writeAndReadPerson() {
+        System.out.println("1.Đọc file");
+        System.out.println("2.Ghi file");
+        int ioChoice = 0;
+        try {
+            ioChoice = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Nhập sai! Quay lại menu !");
+        }
+        if (ioChoice == 1) {
+            String link = "";
+            DO_WHILE:
+            do {
+                ArrayList<Person> input = new ArrayList<>();
+                System.out.println("Mời nhập đường link file để đọc");
+                try {
+                    link = scanner.nextLine();
+                    File file = new File(link);
+                    FileReader fileReader = new FileReader(file);
+                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        String[] arr = line.split(",");
+                        if (arr.length == 6)
+                            input.add(new Student(Integer.parseInt(arr[0]), arr[1], arr[2], Boolean.parseBoolean(arr[3]), arr[4], Double.parseDouble(arr[5])));
+                        else if (arr.length == 5)
+                            input.add(new Teacher(Integer.parseInt(arr[0]), arr[1], arr[2], Boolean.parseBoolean(arr[3]), arr[4]));
+                        else {
+                            bufferedReader.close();
+                            fileReader.close();
+                            System.out.println("File đọc có lỗi !!");
+                            break DO_WHILE;
+                        }
+                    }
+                    bufferedReader.close();
+                    fileReader.close();
+                    System.out.println("***Dữ Liệu Đã Đọc");
+                    for (Person p : input) {
+                        System.out.println(p);
+                    }
+                    break;
+                } catch (FileNotFoundException fife) {
+                    System.out.println("Không tìm thấy file");
+                    break;
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } while (true);
+        }
+        if (ioChoice == 2) {
+            personRepository.writeData();
         }
     }
 }

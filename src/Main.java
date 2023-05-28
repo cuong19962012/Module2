@@ -7,26 +7,24 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
-
-    public static void main(String[] args)
-    {
-        String obj  = "abcdef";
-        int length = obj.length();
-        char c[] = new char[length];
-        obj.getChars(0, length, c, 0);
-        CharArrayReader input1 = new CharArrayReader(c);
-        CharArrayReader input2 = new CharArrayReader(c, 0, 3);
-        int i;
-        try
-        {
-            while((i = input2.read()) != -1)
-            {
-                System.out.print((char)i);
+    public static void main(String[] args) {
+        String s = "12:05:45PM";
+        int head = Integer.parseInt(String.valueOf(s.charAt(0)) + String.valueOf(s.charAt(1)));
+        String tail = String.valueOf(s.charAt(s.length() - 2)) + String.valueOf(s.charAt(s.length() - 1));
+        if (tail.equals("PM")) {
+            if (head != 12) {
+                head = head + 12;
+                s = head + s.substring(2, s.length() - 2);
+            } else {
+                s = s.substring(0, s.length() - 2);
+            }
+        } else {
+            if (head != 12) {
+                s = s.substring(0, s.length() - 2);
+            } else {
+                s = "00" + s.substring(2, s.length() - 2);
             }
         }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        System.out.println(s);
     }
 }

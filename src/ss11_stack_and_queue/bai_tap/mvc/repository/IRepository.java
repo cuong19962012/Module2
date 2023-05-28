@@ -13,4 +13,6 @@ public interface IRepository {
     int searchPerson(int id);
 
     void deletePerson(int index);
+
+    void writeData();
 }
