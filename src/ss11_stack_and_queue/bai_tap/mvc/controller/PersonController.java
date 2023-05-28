@@ -2,6 +2,8 @@ package ss11_stack_and_queue.bai_tap.mvc.controller;
 
 import ss11_stack_and_queue.bai_tap.mvc.service.imp.PersonService;
 
+import javax.swing.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PersonController {
@@ -18,7 +20,16 @@ public class PersonController {
                     "3.Xóa học viên hoặc giảng viên \n" +
                     "4.Đọc ghi file\n" +
                     "5.Thoát");
-            choice = scanner.nextInt();
+            do {
+                try {
+                    choice = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Sai định dạng vui lòng nhập lại");
+                } catch (Exception e) {
+                    System.out.println("Sai rồi! Nhập lại");
+                }
+            } while (true);
             switch (choice) {
                 case 1:
                     personService.display();
@@ -27,8 +38,18 @@ public class PersonController {
                     personService.addPerson();
                     break;
                 case 3:
+                    int id;
                     System.out.print("Nhập ID Muốn Xóa: ");
-                    int id = scanner.nextInt();
+                    do {
+                        try {
+                            id = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException nfe) {
+                            System.out.println("Nhập sai rồi! nhập lại");
+                        } catch (Exception e) {
+                            System.out.println("Nhập sai rồi! nhập lại");
+                        }
+                    } while (true);
                     personService.deletePerson(id);
                     break;
                 case 4:
