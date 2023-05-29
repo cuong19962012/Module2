@@ -1,46 +1,35 @@
 package ss11_stack_and_queue.bai_tap.mvc.repository.imp;
 
+import ss11_stack_and_queue.bai_tap.mvc.common.PersonCommon;
 import ss11_stack_and_queue.bai_tap.mvc.model.Person;
-import ss11_stack_and_queue.bai_tap.mvc.model.Student;
-import ss11_stack_and_queue.bai_tap.mvc.model.Teacher;
 import ss11_stack_and_queue.bai_tap.mvc.repository.IRepository;
 
-import java.io.*;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class PersonRepository implements IRepository {
-    private static ArrayList<Person> data = new ArrayList<>();
-
-    static {
-        Person student1 = new Student(1, "Loan", "27-06-1994", false, "C03", 7.3);
-        Person student2 = new Student(2, "Toàn", "01-03-1996", true, "C03", 7);
-        Person student3 = new Student(3, "Tuấn", "03-10-1993", true, "C03", 8.3);
-        Person teacher1 = new Teacher(4, "Hoàng", "11-01-1990", true, "Java");
-        data.add(student1);
-        data.add(student2);
-        data.add(student3);
-        data.add(teacher1);
-    }
-
+    private static PersonCommon personCommon = new PersonCommon();
 
     @Override
-    public ArrayList<Person> getData() {
-        return data;
+    public List<Person> getData() {
+        return personCommon.readFile();
     }
 
     @Override
     public void addPerson(Person person) {
-        data.add(person);
+        List<Person> list = personCommon.readFile();
+        list.add(person);
+        personCommon.writeFile(list);
     }
 
     @Override
     public int searchPerson(int id) {
-        Iterator<Person> iterator = data.iterator();
+        List<Person> list = personCommon.readFile();
+        Iterator<Person> iterator = list.iterator();
         while (iterator.hasNext()) {
             Person person = iterator.next();
             if (person.getId() == id) {
-                return data.indexOf(person);
+                return list.indexOf(person);
             }
         }
         return -1;
@@ -48,41 +37,9 @@ public class PersonRepository implements IRepository {
 
     @Override
     public void deletePerson(int index) {
-        data.remove(index);
+        List<Person> list = personCommon.readFile();
+        list.remove(index);
+        personCommon.writeFile(list);
     }
 
-    @Override
-    public void writeData() {
-        final String COMA=",";
-        File fileStudent = new File("src/ss11_stack_and_queue/bai_tap/mvc/io_text/list_students.csv");
-        File fileTeacher = new File("src/ss11_stack_and_queue/bai_tap/mvc/io_text/list_teacher.csv");
-        try {
-            FileWriter fileWriterStudent = new FileWriter(fileStudent);
-            BufferedWriter bufferedWriterStudent = new BufferedWriter(fileWriterStudent);
-            FileWriter fileWriterTeacher = new FileWriter(fileTeacher);
-            BufferedWriter bufferedWriterTeacher = new BufferedWriter(fileWriterTeacher);
-            for (Person p : data) {
-                if (p instanceof Student) {
-                    //(1, "Loan", "27-06-1994", false, "C03", 7.3);
-                    String str = p.getId()+COMA+p.getName()+COMA+p.getBirthday()+COMA+p.isGender()+COMA+((Student) p).getClasses()+COMA+((Student) p).getScore();
-                    bufferedWriterStudent.write(str);
-                    bufferedWriterStudent.newLine();
-                } else {
-                    String str=p.getId()+COMA+p.getName()+COMA+p.getBirthday()+COMA+p.isGender()+COMA+((Teacher)p).getTechnique();
-                    bufferedWriterTeacher.write(str);
-                    bufferedWriterTeacher.newLine();
-                }
-            }
-            bufferedWriterTeacher.close();
-            bufferedWriterStudent.close();
-            fileWriterStudent.close();
-            fileWriterTeacher.close();
-        }
-        catch (FileNotFoundException fileNotFoundException){
-            System.out.println("Không tìm thấy File!!");
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

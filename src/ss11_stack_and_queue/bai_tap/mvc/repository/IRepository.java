@@ -3,10 +3,11 @@ package ss11_stack_and_queue.bai_tap.mvc.repository;
 import ss11_stack_and_queue.bai_tap.mvc.model.Person;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface IRepository {
 
-    ArrayList<Person> getData();
+    List<Person> getData();
 
     void addPerson(Person person);
 
@@ -14,5 +15,4 @@ public interface IRepository {
 
     void deletePerson(int index);
 
-    void writeData();
 }

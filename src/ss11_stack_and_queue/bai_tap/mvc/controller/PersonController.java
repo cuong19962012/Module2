@@ -18,8 +18,7 @@ public class PersonController {
             System.out.println("1.Hiện thị danh sách \n" +
                     "2.Thêm học viên hoặc giảng viên\n" +
                     "3.Xóa học viên hoặc giảng viên \n" +
-                    "4.Đọc ghi file\n" +
-                    "5.Thoát");
+                    "4.Thoát");
             do {
                 try {
                     choice = Integer.parseInt(scanner.nextLine());
@@ -53,9 +52,6 @@ public class PersonController {
                     personService.deletePerson(id);
                     break;
                 case 4:
-                    personService.writeAndReadPerson();
-                    break;
-                case 5:
                     break DO_WHILE;
             }
         } while (true);

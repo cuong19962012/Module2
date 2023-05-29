@@ -9,5 +9,4 @@ public interface IPersonService{
 
     void deletePerson(int id);
 
-    void writeAndReadPerson();
 }
