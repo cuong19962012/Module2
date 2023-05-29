@@ -1,30 +1,39 @@
 import java.io.CharArrayReader;
 import java.io.IOException;
 import java.sql.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        String s = "12:05:45PM";
-        int head = Integer.parseInt(String.valueOf(s.charAt(0)) + String.valueOf(s.charAt(1)));
-        String tail = String.valueOf(s.charAt(s.length() - 2)) + String.valueOf(s.charAt(s.length() - 1));
-        if (tail.equals("PM")) {
-            if (head != 12) {
-                head = head + 12;
-                s = head + s.substring(2, s.length() - 2);
-            } else {
-                s = s.substring(0, s.length() - 2);
-            }
-        } else {
-            if (head != 12) {
-                s = s.substring(0, s.length() - 2);
-            } else {
-                s = "00" + s.substring(2, s.length() - 2);
-            }
+        ArrayList<Integer> arr = new ArrayList<>();
+        //1 2 3 4 5 4 3 2 1 3 4
+        arr.add(1);
+        arr.add(4);
+        arr.add(4);
+        arr.add(4);
+        arr.add(5);
+        arr.add(3);
+        Map<Integer,Integer> map = new HashMap<>();
+        int mapKey;
+        for (int i = 0; i < arr.size(); i++) {
+            mapKey = arr.get(i);
+            if (map.containsKey(mapKey))
+                map.put(mapKey, map.get(mapKey)+1);
+            else
+                map.put(mapKey, 1);
         }
-        System.out.println(s);
+        int highestKey = arr.get(0);
+        int highestValue = map.get(highestKey);
+        for (Integer key : map.keySet()) {
+            if (highestValue < map.get(key)) {
+                highestValue = map.get(key);
+                highestKey = key;
+            } else if (highestValue == map.get(key) && highestKey > key) {
+                highestValue = map.get(key);
+                highestKey = key;
+            }
+
+        }
+        System.out.println(highestKey);
     }
 }
