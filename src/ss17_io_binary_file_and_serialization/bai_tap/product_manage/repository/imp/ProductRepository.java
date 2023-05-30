@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ProductRepository implements IProductRepository {
 
-    ProductCommon productCommon = new ProductCommon();
+    static ProductCommon productCommon = new ProductCommon();
 
     static {
         List<Product> list = new ArrayList<>();
@@ -20,18 +20,7 @@ public class ProductRepository implements IProductRepository {
         list.add(product1);
         list.add(product2);
         list.add(product3);
-        File file = new File("src/ss17_io_binary_file_and_serialization/bai_tap/product_manage/common/data.dat");
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(file, true);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(list);
-            objectOutputStream.close();
-            fileOutputStream.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        productCommon.writeFile(list);
     }
 
     @Override
@@ -48,9 +37,9 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public Product searchProduct(String name) {
-        List<Product> list=productCommon.readFile();
+        List<Product> list = productCommon.readFile();
         for (Product p : list) {
-            if(p.getName().equals(name))
+            if (p.getName().equals(name))
                 return p;
         }
         return null;
