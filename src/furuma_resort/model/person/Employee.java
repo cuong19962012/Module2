@@ -3,7 +3,7 @@ package furuma_resort.model.person;
 public class Employee extends Person {
     private String literacy;
     private String position;
-    private long salary;
+    private double salary;
 
     public Employee() {
     }
@@ -16,7 +16,7 @@ public class Employee extends Person {
     //    private String email;
 
 
-    public Employee(String id, String name, String birthday, boolean gender, long identityNumber, long phoneNumber, String email, String literacy, String position, long salary) {
+    public Employee(String id, String name, String birthday, boolean gender, String identityNumber, String phoneNumber, String email, String literacy, String position, double salary) {
         super(id, name, birthday, gender, identityNumber, phoneNumber, email);
         this.literacy = literacy;
         this.position = position;
@@ -49,22 +49,22 @@ public class Employee extends Person {
     }
 
     @Override
-    public long getIdentityNumber() {
+    public String getIdentityNumber() {
         return super.getIdentityNumber();
     }
 
     @Override
-    public void setIdentityNumber(long identityNumber) {
+    public void setIdentityNumber(String identityNumber) {
         super.setIdentityNumber(identityNumber);
     }
 
     @Override
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return super.getPhoneNumber();
     }
 
     @Override
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         super.setPhoneNumber(phoneNumber);
     }
 
@@ -104,11 +104,11 @@ public class Employee extends Person {
         this.position = position;
     }
 
-    public long getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(long salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -124,7 +124,7 @@ public class Employee extends Person {
                 ", email='" + getEmail() + '\'' +
                 ", literacy='" + literacy + '\'' +
                 ", position='" + position + '\'' +
-                ", salary=" + salary +
+                ", salary=" + String.format("%.2f", salary) +
                 '}';
     }
 }

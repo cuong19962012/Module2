@@ -7,15 +7,15 @@ public abstract class Person {
     private String name;
     private String birthday;
     private boolean gender;
-    private long identityNumber;
-    private long phoneNumber;
+    private String identityNumber;
+    private String phoneNumber;
     private String email;
 
     public Person() {
     }
 
 
-    public Person(String id, String name, String birthday, boolean gender, long identityNumber, long phoneNumber, String email) {
+    public Person(String id, String name, String birthday, boolean gender, String identityNumber, String phoneNumber, String email) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -57,19 +57,19 @@ public abstract class Person {
         this.gender = gender;
     }
 
-    public long getIdentityNumber() {
+    public String getIdentityNumber() {
         return identityNumber;
     }
 
-    public void setIdentityNumber(long identityNumber) {
+    public void setIdentityNumber(String identityNumber) {
         this.identityNumber = identityNumber;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

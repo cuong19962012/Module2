@@ -1,8 +1,13 @@
 package furuma_resort.repository;
 
-public interface IRepository {
-    void display();
+import furuma_resort.model.person.Employee;
+import furuma_resort.model.person.Person;
 
-    void add();
+import java.util.List;
+
+public interface IRepository<E> {
+    List<E> display();
+
+    void add(Person employee);
 
 }

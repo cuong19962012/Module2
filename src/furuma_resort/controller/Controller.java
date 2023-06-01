@@ -1,9 +1,12 @@
 package furuma_resort.controller;
 
+import furuma_resort.service.imp.EmployeeService;
+
 import java.util.Scanner;
 
 public class Controller {
     private static Scanner scanner = new Scanner(System.in);
+    private static EmployeeService employeeService = new EmployeeService();
 
     public void showMenu() {
         DO_WHILE:
@@ -167,7 +170,9 @@ public class Controller {
             System.out.println("1.\tDisplay list customers\n" +
                     "2.\tAdd new customer\n" +
                     "3.\tEdit customer\n" +
-                    "4.\tReturn main menu\n");
+                    "4.\tDelete customer\n" +
+                    "5.\tSearch by name customer\n" +
+                    "6.\tReturn main menu\n");
             int choice;
             do {
                 try {
@@ -190,6 +195,12 @@ public class Controller {
                     //method;
                     break;
                 case 4:
+                    //method;
+                    break;
+                case 5:
+                    //method;
+                    break;
+                case 6:
                     break DO_WHILE;
                 default:
                     System.out.println("Wrong choice");
@@ -203,7 +214,9 @@ public class Controller {
             System.out.println("1\tDisplay list employees\n" +
                     "2\tAdd new employee\n" +
                     "3\tEdit employee\n" +
-                    "4\tReturn main menu\n");
+                    "4\tDelete employee\n" +
+                    "5\tSearch by name employee\n" +
+                    "6\tReturn main menu\n");
             int choice;
             do {
                 try {
@@ -217,15 +230,24 @@ public class Controller {
             } while (true);
             switch (choice) {
                 case 1:
+                    employeeService.display();
                     //method;
                     break;
                 case 2:
+                    employeeService.add();
                     //method;
                     break;
                 case 3:
                     //method;
                     break;
                 case 4:
+                    //method
+                    employeeService.delete();
+                    break;
+                case 5:
+                    //method
+                    break;
+                case 6:
                     break DO_WHILE;
                 default:
                     System.out.println("Wrong choice");

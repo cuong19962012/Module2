@@ -7,7 +7,7 @@ public class Customer extends Person {
     public Customer() {
     }
 
-    public Customer(String id, String name, String birthday, boolean gender, long identityNumber, long phoneNumber, String email, String typeCustomer, String address) {
+    public Customer(String id, String name, String birthday, boolean gender, String identityNumber, String phoneNumber, String email, String typeCustomer, String address) {
         super(id, name, birthday, gender, identityNumber, phoneNumber, email);
         this.typeCustomer = typeCustomer;
         this.address = address;
@@ -60,22 +60,22 @@ public class Customer extends Person {
     }
 
     @Override
-    public long getIdentityNumber() {
+    public String getIdentityNumber() {
         return super.getIdentityNumber();
     }
 
     @Override
-    public void setIdentityNumber(long identityNumber) {
+    public void setIdentityNumber(String identityNumber) {
         super.setIdentityNumber(identityNumber);
     }
 
     @Override
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return super.getPhoneNumber();
     }
 
     @Override
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         super.setPhoneNumber(phoneNumber);
     }
 
