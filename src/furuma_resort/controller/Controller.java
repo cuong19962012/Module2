@@ -1,5 +1,6 @@
 package furuma_resort.controller;
 
+import furuma_resort.service.imp.CustomerService;
 import furuma_resort.service.imp.EmployeeService;
 
 import java.util.Scanner;
@@ -7,6 +8,7 @@ import java.util.Scanner;
 public class Controller {
     private static Scanner scanner = new Scanner(System.in);
     private static EmployeeService employeeService = new EmployeeService();
+    private static CustomerService customerService = new CustomerService();
 
     public void showMenu() {
         DO_WHILE:
@@ -187,18 +189,23 @@ public class Controller {
             switch (choice) {
                 case 1:
                     //method;
+                    customerService.display();
                     break;
                 case 2:
                     //method;
+                    customerService.add();
                     break;
                 case 3:
                     //method;
+                    customerService.edit();
                     break;
                 case 4:
                     //method;
+                    customerService.delete();
                     break;
                 case 5:
                     //method;
+                    customerService.search();
                     break;
                 case 6:
                     break DO_WHILE;
@@ -238,6 +245,7 @@ public class Controller {
                     //method;
                     break;
                 case 3:
+                    employeeService.edit();
                     //method;
                     break;
                 case 4:
@@ -245,6 +253,7 @@ public class Controller {
                     employeeService.delete();
                     break;
                 case 5:
+                    employeeService.search();
                     //method
                     break;
                 case 6:

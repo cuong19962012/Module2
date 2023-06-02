@@ -34,9 +34,35 @@ public class EmployeeRepository implements IEmployeeRepository {
     }
 
     @Override
-    public void edit(int index) {
+    public void edit(int index, List<String> editInfo) {
         List<Person> list = display();
-
+        Person employee = list.get(index);
+        if (!editInfo.get(0).equals(""))
+            employee.setId(editInfo.get(0));
+        if (!editInfo.get(1).equals(""))
+            employee.setName(editInfo.get(1));
+        if (!editInfo.get(2).equals(""))
+            employee.setBirthday(editInfo.get(2));
+        if (!editInfo.get(3).equals("null"))
+            employee.setGender(Boolean.parseBoolean(editInfo.get(3)));
+        if (!editInfo.get(4).equals(""))
+            employee.setIdentityNumber(editInfo.get(4));
+        if (!editInfo.get(5).equals(""))
+            employee.setPhoneNumber(editInfo.get(5));
+        if (!editInfo.get(6).equals(""))
+            employee.setEmail(editInfo.get(6));
+        if (!editInfo.get(7).equals(""))
+            ((Employee) employee).setLiteracy(editInfo.get(7));
+        if (!editInfo.get(8).equals(""))
+            ((Employee) employee).setPosition(editInfo.get(8));
+        if (!editInfo.get(9).equals("null"))
+            ((Employee) employee).setSalary(Double.parseDouble(editInfo.get(9)));
+        List<String> strEmployee = new ArrayList<>();
+        for (Person e : list) {
+            String str = e.getId() + COMMA + e.getName() + COMMA + e.getBirthday() + COMMA + e.isGender() + COMMA + e.getIdentityNumber() + COMMA + e.getPhoneNumber() + COMMA + e.getEmail() + COMMA + ((Employee) e).getLiteracy() + COMMA + ((Employee) e).getPosition() + COMMA + String.format("%.2f", ((Employee) e).getSalary());
+            strEmployee.add(str);
+        }
+        WriteFileEmployee.writeFile(strEmployee, PATH_EMPLOYEE, false);
     }
 
     @Override
@@ -46,8 +72,19 @@ public class EmployeeRepository implements IEmployeeRepository {
         List<String> strEmployee = new ArrayList<>();
         for (Person e : list) {
             String str = e.getId() + COMMA + e.getName() + COMMA + e.getBirthday() + COMMA + e.isGender() + COMMA + e.getIdentityNumber() + COMMA + e.getPhoneNumber() + COMMA + e.getEmail() + COMMA + ((Employee) e).getLiteracy() + COMMA + ((Employee) e).getPosition() + COMMA + String.format("%.2f", ((Employee) e).getSalary());
+            strEmployee.add(str);
         }
         WriteFileEmployee.writeFile(strEmployee, PATH_EMPLOYEE, false);
+    }
+
+    @Override
+    public Person search(String searchName) {
+        List<Person> list = display();
+        for (Person e : list) {
+            if(e.getName().equals(searchName))
+                return e;
+        }
+        return null;
     }
 
     @Override
@@ -62,11 +99,16 @@ public class EmployeeRepository implements IEmployeeRepository {
         return data;
     }
 
+
     @Override
-    public void add(Person employee) {
-        List<String> str = null;
-        String strEmployee = employee.getId() + COMMA + employee.getName() + COMMA + employee.getBirthday() + COMMA + employee.isGender() + COMMA + employee.getIdentityNumber() + COMMA + employee.getPhoneNumber() + COMMA + employee.getEmail() + COMMA + ((Employee) employee).getLiteracy() + COMMA + ((Employee) employee).getPosition() + COMMA + String.format("%.2f", ((Employee) employee).getSalary());
-        str.add(strEmployee);
-        WriteFileEmployee.writeFile(str, PATH_EMPLOYEE, true);
+    public boolean add(Person employee) {
+        if (check(employee.getId()) == -1) {
+            List<String> str = new ArrayList<>();
+            String strEmployee = employee.getId() + COMMA + employee.getName() + COMMA + employee.getBirthday() + COMMA + employee.isGender() + COMMA + employee.getIdentityNumber() + COMMA + employee.getPhoneNumber() + COMMA + employee.getEmail() + COMMA + ((Employee) employee).getLiteracy() + COMMA + ((Employee) employee).getPosition() + COMMA + String.format("%.2f", ((Employee) employee).getSalary());
+            str.add(strEmployee);
+            WriteFileEmployee.writeFile(str, PATH_EMPLOYEE, true);
+            return true;
+        } else
+            return false;
     }
 }

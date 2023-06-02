@@ -1,8 +1,10 @@
 package furuma_resort.repository;
 
-public interface IFacilityRepository extends IRepository {
-    void edit();
+import furuma_resort.model.facility.Facility;
 
-    void displayListMaintenance();
+import java.util.List;
+import java.util.Map;
 
+public interface IFacilityRepository {
+    Map<Facility,Integer> getData();
 }

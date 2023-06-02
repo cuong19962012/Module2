@@ -3,11 +3,15 @@ package furuma_resort.repository;
 import furuma_resort.model.person.Employee;
 import furuma_resort.model.person.Person;
 
-public interface IEmployeeRepository extends IRepository {
+import java.util.List;
+
+public interface IEmployeeRepository extends IRepository <Person>{
 
 
     int check(String id);
 
-    void edit(int index);
+    void edit(int index, List<String> editInfo);
     void delete(int index);
+
+    Person search(String searchName);
 }

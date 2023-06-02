@@ -1,4 +1,4 @@
-package furuma_resort.utils.employee_file;
+package furuma_resort.utils.customer_file;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -6,8 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public class WriteFileEmployee {
-    public static void writeFile(List<String> data, String path,boolean append) {
+public class WriteFileCustomer {
+    public static void writeFile(List<String> data, String path, boolean append) {
         File file = new File(path);
         try {
             FileWriter fileWriter = new FileWriter(file,append);

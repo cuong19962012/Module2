@@ -1,10 +1,10 @@
-package furuma_resort.utils.employee_file;
+package furuma_resort.utils.customer_file;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadFileEmployee {
+public class ReadFileCustomer {
     public static List<String> readFile(String path) {
         List<String> data = new ArrayList<>();
         File file = new File(path);
@@ -16,9 +16,9 @@ public class ReadFileEmployee {
                 data.add(line);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Can't find File!!!");
+            System.out.println("Không tìm thấy File!!!");
         } catch (IOException e) {
-            System.out.println("Exception read File!!!");
+            System.out.println("Lỗi đọc File!!!");
         }
         return data;
     }
