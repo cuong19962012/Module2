@@ -5,7 +5,7 @@ import java.util.Objects;
 public abstract class Facility {
     private String idFacility;
     private String nameFacility;
-    private int areaUse;
+    private float areaUse;
     private long costForRent;
     private int maxPerson;
     private String typeOfRent;
@@ -13,7 +13,7 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String idFacility, String nameFacility, int areaUse, long costForRent, int maxPerson, String typeOfRent) {
+    public Facility(String idFacility, String nameFacility, float areaUse, long costForRent, int maxPerson, String typeOfRent) {
         this.idFacility = idFacility;
         this.nameFacility = nameFacility;
         this.areaUse = areaUse;
@@ -38,11 +38,11 @@ public abstract class Facility {
         this.nameFacility = nameFacility;
     }
 
-    public int getAreaUse() {
+    public float getAreaUse() {
         return areaUse;
     }
 
-    public void setAreaUse(int areaUse) {
+    public void setAreaUse(float areaUse) {
         this.areaUse = areaUse;
     }
 

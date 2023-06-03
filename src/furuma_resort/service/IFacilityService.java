@@ -1,8 +1,12 @@
 package furuma_resort.service;
 
-public interface IFacilityService extends IService {
-    void edit();
+public interface IFacilityService {
+    void displayListFacility();
 
     void displayListMaintenance();
+
+    void add();
+
+    void delete();
 
 }

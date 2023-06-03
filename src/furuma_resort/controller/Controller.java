@@ -2,13 +2,16 @@ package furuma_resort.controller;
 
 import furuma_resort.service.imp.CustomerService;
 import furuma_resort.service.imp.EmployeeService;
+import furuma_resort.service.imp.FacilityService;
 
 import java.util.Scanner;
 
 public class Controller {
+
     private static Scanner scanner = new Scanner(System.in);
     private static EmployeeService employeeService = new EmployeeService();
     private static CustomerService customerService = new CustomerService();
+    private static FacilityService facilityService = new FacilityService();
 
     public void showMenu() {
         DO_WHILE:
@@ -136,7 +139,8 @@ public class Controller {
             System.out.println("1\tDisplay list facility\n" +
                     "2\tAdd new facility\n" +
                     "3\tDisplay list facility maintenance\n" +
-                    "4\tReturn main menu\n");
+                    "4\tDelete facility\n" +
+                    "5\tReturn main menu\n");
             int choice;
             do {
                 try {
@@ -150,15 +154,22 @@ public class Controller {
             } while (true);
             switch (choice) {
                 case 1:
+                    facilityService.displayListFacility();
                     //method;
                     break;
                 case 2:
+                    facilityService.add();
                     //method;
                     break;
                 case 3:
+                    facilityService.displayListMaintenance();
                     //method;
                     break;
                 case 4:
+                    facilityService.delete();
+                    //method;
+                    break;
+                case 5:
                     break DO_WHILE;
                 default:
                     System.out.println("Wrong choice");

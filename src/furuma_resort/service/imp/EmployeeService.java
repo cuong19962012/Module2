@@ -58,9 +58,9 @@ public class EmployeeService implements IEmployeeService {
                 if (birthday.matches("^\\d{2}-\\d{2}-\\d{4}$") && ChronoUnit.YEARS.between(dateBefore, dateAfter) >= 18)
                     break;
             } catch (NumberFormatException e) {
-                System.out.println("Định dạng sai");
+                System.out.println("Wrong format");
             } catch (Exception e) {
-                System.out.println("Lỗi rồi");
+                System.out.println("Exception");
             }
         } while (true);
         Boolean gender = null;
@@ -103,11 +103,25 @@ public class EmployeeService implements IEmployeeService {
             if (email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"))
                 break;
         } while (true);
-        System.out.println("Enter literacy");
-        String literacy = scanner.nextLine();
-        System.out.println("Enter position");
-        String position = scanner.nextLine();
-        Double salary = null;
+        String literacy;
+        do {
+            System.out.println("Enter literacy");
+            literacy = scanner.nextLine();
+            if (literacy.equals(""))
+                break;
+            if(literacy.equals("Vocational")||literacy.equals("College")||literacy.equals("University")||literacy.equals("Postgraduate"))
+                break;
+        }while (true);
+        String position;
+        do {
+            System.out.println("Enter position");
+            position = scanner.nextLine();
+            if(position.equals(""))
+                break;
+            if(position.equals("Receptionist")||position.equals("Waiter")||position.equals("Expert")||position.equals("Supervisor")||position.equals("Manager")||position.equals("Director"))
+                break;
+        }while (true);
+        Double salary=null;
         do {
             System.out.println("Enter salary");
             String strSalary = scanner.nextLine();
@@ -247,10 +261,20 @@ public class EmployeeService implements IEmployeeService {
             System.out.println("Enter email");
             email = scanner.nextLine();
         } while (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"));
-        System.out.println("Enter literacy");
-        String literacy = scanner.nextLine();
-        System.out.println("Enter position");
-        String position = scanner.nextLine();
+        String literacy;
+        do {
+            System.out.println("Enter literacy");
+            literacy = scanner.nextLine();
+            if(literacy.equals("Vocational")||literacy.equals("College")||literacy.equals("University")||literacy.equals("Postgraduate"))
+                break;
+        }while (true);
+        String position;
+        do {
+            System.out.println("Enter position");
+            position = scanner.nextLine();
+            if(position.equals("Receptionist")||position.equals("Waiter")||position.equals("Expert")||position.equals("Supervisor")||position.equals("Manager")||position.equals("Director"))
+                break;
+        }while (true);
         double salary;
         do {
             System.out.println("Enter salary");
@@ -260,7 +284,7 @@ public class EmployeeService implements IEmployeeService {
         } while (true);
         ////String id, String name, String birthday, boolean gender, String identityNumber, String phoneNumber,
         //        // String email, String literacy, String position, double salary
-        Person person = new Employee(id, name, birthday, gender, identityNumber, phoneNumber, email, literacy, position, salary);
+        Person person = new Employee(id, name, birthday, gender, identityNumber, phoneNumber, email, position, position, salary);
         return person;
     }
 }

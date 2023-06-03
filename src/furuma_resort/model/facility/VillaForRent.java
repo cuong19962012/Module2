@@ -2,13 +2,13 @@ package furuma_resort.model.facility;
 
 public class VillaForRent extends Facility {
     private String standard;
-    private int areaPool;
+    private float areaPool;
     private int numberOfFloor;
 
     public VillaForRent() {
     }
 
-    public VillaForRent(String idFacility, String nameFacility, int areaUse, long costForRent, int maxPerson, String typeOfRent, String standard, int areaPool, int numberOfFloor) {
+    public VillaForRent(String idFacility, String nameFacility, float areaUse, long costForRent, int maxPerson, String typeOfRent, String standard, float areaPool, int numberOfFloor) {
         super(idFacility, nameFacility, areaUse, costForRent, maxPerson, typeOfRent);
         this.standard = standard;
         this.areaPool = areaPool;
@@ -23,11 +23,11 @@ public class VillaForRent extends Facility {
         this.standard = standard;
     }
 
-    public int getAreaPool() {
+    public float getAreaPool() {
         return areaPool;
     }
 
-    public void setAreaPool(int areaPool) {
+    public void setAreaPool(float areaPool) {
         this.areaPool = areaPool;
     }
 
@@ -60,12 +60,12 @@ public class VillaForRent extends Facility {
     }
 
     @Override
-    public int getAreaUse() {
+    public float getAreaUse() {
         return super.getAreaUse();
     }
 
     @Override
-    public void setAreaUse(int areaUse) {
+    public void setAreaUse(float areaUse) {
         super.setAreaUse(areaUse);
     }
 

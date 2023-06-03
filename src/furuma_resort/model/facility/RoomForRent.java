@@ -6,7 +6,7 @@ public class RoomForRent extends Facility {
     public RoomForRent() {
     }
 
-    public RoomForRent(String idFacility, String nameFacility, int areaUse, long costForRent, int maxPerson, String typeOfRent, String serviceFree) {
+    public RoomForRent(String idFacility, String nameFacility, float areaUse, long costForRent, int maxPerson, String typeOfRent, String serviceFree) {
         super(idFacility, nameFacility, areaUse, costForRent, maxPerson, typeOfRent);
         this.serviceFree = serviceFree;
     }
@@ -40,12 +40,12 @@ public class RoomForRent extends Facility {
     }
 
     @Override
-    public int getAreaUse() {
+    public float getAreaUse() {
         return super.getAreaUse();
     }
 
     @Override
-    public void setAreaUse(int areaUse) {
+    public void setAreaUse(float areaUse) {
         super.setAreaUse(areaUse);
     }
 
