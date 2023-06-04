@@ -1,8 +1,6 @@
 package furuma_resort.controller;
 
-import furuma_resort.service.imp.CustomerService;
-import furuma_resort.service.imp.EmployeeService;
-import furuma_resort.service.imp.FacilityService;
+import furuma_resort.service.imp.*;
 
 import java.util.Scanner;
 
@@ -12,6 +10,9 @@ public class Controller {
     private static EmployeeService employeeService = new EmployeeService();
     private static CustomerService customerService = new CustomerService();
     private static FacilityService facilityService = new FacilityService();
+    private static BookingService bookingService = new BookingService();
+    private static ContactService contactService = new ContactService();
+    private static PromotionService promotionService = new PromotionService();
 
     public void showMenu() {
         DO_WHILE:
@@ -76,9 +77,11 @@ public class Controller {
             } while (true);
             switch (choice) {
                 case 1:
+                    promotionService.displayCustomerUseService();
                     //method;
                     break;
                 case 2:
+                    promotionService.displayCustomerGetVoucher();
                     //method;
                     break;
                 case 3:
@@ -111,18 +114,23 @@ public class Controller {
             } while (true);
             switch (choice) {
                 case 1:
+                    bookingService.add();
                     //method;
                     break;
                 case 2:
+                    bookingService.display();
                     //method;
                     break;
                 case 3:
+                    contactService.add();
                     //method;
                     break;
                 case 4:
+                    contactService.display();
                     //method;
                     break;
                 case 5:
+                    contactService.edit();
                     //method;
                     break;
                 case 6:

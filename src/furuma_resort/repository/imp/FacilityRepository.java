@@ -6,13 +6,16 @@ import furuma_resort.model.facility.RoomForRent;
 import furuma_resort.model.facility.VillaForRent;
 import furuma_resort.repository.IFacilityRepository;
 
+import java.time.LocalDate;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class FacilityRepository implements IFacilityRepository {
     private static final Map<Facility, Integer> data = new LinkedHashMap<>();
+    private static LocalDate resetTime = LocalDate.now();
 
     static {
+
         //String idFacility, String nameFacility, int areaUse, long costForRent, int maxPerson, String typeOfRent, String standard, int numberOfFloor
         Facility house1 = new HouseForRent("SVVL-1111", "House 1", 50, 10000000, 4, "Days 5", "Normal", 1);
         //String idFacility, String nameFacility, int areaUse, long costForRent, int maxPerson, String typeOfRent, String serviceFree
@@ -22,6 +25,11 @@ public class FacilityRepository implements IFacilityRepository {
         data.put(house1, 0);
         data.put(room1, 5);
         data.put(villa1, 0);
+        LocalDate now = LocalDate.now();
+        if (now.getDayOfMonth() == 1) {
+            for (Facility facility : data.keySet())
+                data.put(facility, 0);
+        }
     }
 
     @Override
@@ -53,5 +61,7 @@ public class FacilityRepository implements IFacilityRepository {
         return false;
     }
 
-
+    public void maintenance(Facility facility) {
+        data.put(facility, data.get(facility) + 1);
+    }
 }

@@ -12,4 +12,5 @@ public interface IFacilityRepository {
     void delete(String id);
 
     boolean check(String id);
+
 }

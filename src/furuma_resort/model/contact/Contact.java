@@ -69,7 +69,7 @@ public class Contact {
     public String toString() {
         return "Contact{" +
                 "idContact='" + idContact + '\'' +
-                ", idBooking=" + idBooking +
+                ", idBooking=" + idBooking.getIdBooking() +
                 ", deposit=" + deposit +
                 ", totalPay=" + totalPay +
                 '}';

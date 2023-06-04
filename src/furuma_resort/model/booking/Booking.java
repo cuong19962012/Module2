@@ -1,27 +1,28 @@
 package furuma_resort.model.booking;
 
+import furuma_resort.model.facility.Facility;
 import furuma_resort.model.person.Customer;
 
 import java.util.Objects;
 
-public class Booking {
+public class Booking implements Comparable<Booking> {
     private String idBooking;
     private String dateBooking;
     private String dateStart;
     private String dateEnd;
     private Customer idCustomer;
-    private String idService;
+    private Facility idFacility;
 
     public Booking() {
     }
 
-    public Booking(String idBooking, String dateBooking, String dateStart, String dateEnd, Customer idCustomer, String idService) {
+    public Booking(String idBooking, String dateBooking, String dateStart, String dateEnd, Customer idCustomer, Facility idFacility) {
         this.idBooking = idBooking;
         this.dateBooking = dateBooking;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.idCustomer = idCustomer;
-        this.idService = idService;
+        this.idFacility = idFacility;
     }
 
     public String getIdBooking() {
@@ -64,12 +65,12 @@ public class Booking {
         this.idCustomer = idCustomer;
     }
 
-    public String getIdService() {
-        return idService;
+    public Facility getIdFacility() {
+        return idFacility;
     }
 
-    public void setIdService(String idService) {
-        this.idService = idService;
+    public void setIdFacility(Facility idFacility) {
+        this.idFacility = idFacility;
     }
 
     @Override
@@ -79,8 +80,8 @@ public class Booking {
                 ", dateBooking='" + dateBooking + '\'' +
                 ", dateStart='" + dateStart + '\'' +
                 ", dateEnd='" + dateEnd + '\'' +
-                ", idCustomer='" + idCustomer + '\'' +
-                ", idService='" + idService + '\'' +
+                ", idCustomer='" + idCustomer.getId() + '\'' +
+                ", idService='" + idFacility.getIdFacility() + '\'' +
                 '}';
     }
 
@@ -95,5 +96,14 @@ public class Booking {
     @Override
     public int hashCode() {
         return Objects.hash(getIdBooking());
+    }
+
+
+    @Override
+    public int compareTo(Booking o) {
+        if (this.getDateStart().equals(o.getDateStart()))
+            return this.getDateEnd().compareTo(o.getDateEnd());
+        else
+            return this.getDateStart().compareTo(o.getDateStart());
     }
 }
