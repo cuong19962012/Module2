@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class FacilityRepository implements IFacilityRepository {
     private static final Map<Facility, Integer> data = new LinkedHashMap<>();
-    private static LocalDate resetTime = LocalDate.now();
+    private static final LocalDate resetTime = LocalDate.now();
 
     static {
 

@@ -4,6 +4,9 @@ import furuma_resort.model.booking.Booking;
 import furuma_resort.model.facility.Facility;
 import furuma_resort.model.person.Customer;
 import furuma_resort.model.person.Person;
+import furuma_resort.repository.IBookingRepository;
+import furuma_resort.repository.ICustomerRepository;
+import furuma_resort.repository.IFacilityRepository;
 import furuma_resort.repository.imp.BookingRepository;
 import furuma_resort.repository.imp.CustomerRepository;
 import furuma_resort.repository.imp.FacilityRepository;
@@ -16,9 +19,9 @@ import java.util.Set;
 
 public class BookingService implements IBookingService {
     private static Scanner scanner = new Scanner(System.in);
-    private final BookingRepository bookingRepository = new BookingRepository();
-    private final CustomerRepository customerRepository = new CustomerRepository();
-    private final FacilityRepository facilityRepository = new FacilityRepository();
+    private final IBookingRepository bookingRepository = new BookingRepository();
+    private final ICustomerRepository customerRepository = new CustomerRepository();
+    private final IFacilityRepository facilityRepository = new FacilityRepository();
 
     @Override
     public void display() {
@@ -36,7 +39,8 @@ public class BookingService implements IBookingService {
         }
         System.out.println("Facility list: ");
         for (Facility f : facilityRepository.getData().keySet()) {
-            System.out.println(f);
+            if(facilityRepository.getData().get(f)<5)
+                System.out.println(f);
         }
         //String idBooking, String dateBooking, String dateStart,
         // String dateEnd, Customer idCustomer, Facility idFacility
@@ -130,7 +134,7 @@ public class BookingService implements IBookingService {
             System.out.println("Enter id facility");
             idFacility = scanner.nextLine();
             for (Facility f : facilityRepository.getData().keySet()) {
-                if (f.getIdFacility().equals(idFacility)) {
+                if (f.getIdFacility().equals(idFacility) && facilityRepository.getData().get(f) < 5) {
                     objectFacility = f;
                     break DO_WHILE2;
                 }

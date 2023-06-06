@@ -2,6 +2,7 @@ package furuma_resort.service.imp;
 
 import furuma_resort.model.person.Employee;
 import furuma_resort.model.person.Person;
+import furuma_resort.repository.IEmployeeRepository;
 import furuma_resort.repository.imp.EmployeeRepository;
 import furuma_resort.service.IEmployeeService;
 
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeService implements IEmployeeService {
-    private static EmployeeRepository employeeRepository = new EmployeeRepository();
+    private static IEmployeeRepository employeeRepository = new EmployeeRepository();
     private static Scanner scanner = new Scanner(System.in);
 
     @Override

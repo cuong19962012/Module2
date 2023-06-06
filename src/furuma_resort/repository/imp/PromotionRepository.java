@@ -2,19 +2,18 @@ package furuma_resort.repository.imp;
 
 import furuma_resort.model.booking.Booking;
 import furuma_resort.model.person.Customer;
+import furuma_resort.repository.IBookingRepository;
 import furuma_resort.repository.IPromotionRepository;
 import furuma_resort.utils.comparator.ComparatorCustomer;
-import ss12_java_collection_framework.thuc_hanh.create_binary_search_tree.Tree;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class PromotionRepository implements IPromotionRepository {
-    private static BookingRepository bookingRepository = new BookingRepository();
-    private static Set<Booking> dataBooking = bookingRepository.getData();
-    private static Set<Customer> dataCustomerUseService = new TreeSet<>(new ComparatorCustomer());
-    private static final String VOUCHER_10 = "Voucher 10%";
-    private static final String VOUCHER_20 = "Voucher 20%";
-    private static final String VOUCHER_50 = "Voucher 50%";
+    private static final IBookingRepository bookingRepository = new BookingRepository();
+    private static final Set<Booking> dataBooking = bookingRepository.getData();
+    private static final Set<Customer> dataCustomerUseService = new TreeSet<>(new ComparatorCustomer());
+
 
     static {
         // dataBooking
@@ -28,30 +27,32 @@ public class PromotionRepository implements IPromotionRepository {
 
     @Override
     public Set<Customer> getCustomerUseService(int year) {
-        for (Booking c : dataBooking) {
-            String dateBooking = c.getDateBooking();
+        for (Booking b : dataBooking) {
+            String dateBooking = b.getDateBooking();
             String strYear = "" + dateBooking.charAt(6) + dateBooking.charAt(7) + dateBooking.charAt(8) + dateBooking.charAt(9);
             if (strYear.equals(String.valueOf(year)))
-                dataCustomerUseService.add(c.getIdCustomer());
+                dataCustomerUseService.add(b.getIdCustomer());
         }
         return dataCustomerUseService;
     }
 
     @Override
-    public HashMap<Customer, String> getCustomerWhoGetVoucher(int voucher10, int voucher20, int voucher50) {
-        HashMap<Customer, String> dataCustomerGetVoucher = new HashMap<>();
+    public Stack<Booking> getBooking() {
+        // HashMap<Customer, String> dataCustomerGetVoucher = new HashMap<>();
+        List<String> dataCustomerGetVoucher = new LinkedList<>();
         Stack<Booking> stack = new Stack<>();
-        for (Booking b : dataBooking) {
-            stack.push(b);
-        }
-        if (voucher10 >= stack.size()) {
-            for (Booking b : stack) {
-                dataCustomerGetVoucher.put(stack.pop().getIdCustomer(), VOUCHER_10);
-            }
-        }else if(voucher20+voucher10>= stack.size())
-        {
 
+        for (Booking b : dataBooking) {
+            String year = "" + b.getDateBooking().charAt(6) + b.getDateBooking().charAt(7) + b.getDateBooking().charAt(8) + b.getDateBooking().charAt(9);
+            if (year.equals(String.valueOf(LocalDate.now().getYear())))
+                stack.push(b);
         }
-        return dataCustomerGetVoucher;
+
+        return stack;
+    }
+
+    @Override
+    public int checkBooking() {
+        return dataBooking.size();
     }
 }

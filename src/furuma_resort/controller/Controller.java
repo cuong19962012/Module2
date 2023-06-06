@@ -1,18 +1,19 @@
 package furuma_resort.controller;
 
+import furuma_resort.service.*;
 import furuma_resort.service.imp.*;
 
 import java.util.Scanner;
 
 public class Controller {
 
-    private static Scanner scanner = new Scanner(System.in);
-    private static EmployeeService employeeService = new EmployeeService();
-    private static CustomerService customerService = new CustomerService();
-    private static FacilityService facilityService = new FacilityService();
-    private static BookingService bookingService = new BookingService();
-    private static ContactService contactService = new ContactService();
-    private static PromotionService promotionService = new PromotionService();
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final IEmployeeService employeeService = new EmployeeService();
+    private static final ICustomerService customerService = new CustomerService();
+    private static final IFacilityService facilityService = new FacilityService();
+    private static final IBookingService bookingService = new BookingService();
+    private static final IContactService contactService = new ContactService();
+    private static final IPromotionService promotionService = new PromotionService();
 
     public void showMenu() {
         DO_WHILE:
@@ -29,7 +30,7 @@ public class Controller {
                     choice = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (NumberFormatException numberFormatException) {
-                    System.out.println("NumberFormatException");
+                    System.out.println("Number format wrong");
                 } catch (Exception exception) {
                     System.out.println("Exception");
                 }
@@ -70,7 +71,7 @@ public class Controller {
                     choice = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (NumberFormatException numberFormatException) {
-                    System.out.println("NumberFormatException");
+                    System.out.println("Number format wrong");
                 } catch (Exception exception) {
                     System.out.println("Exception");
                 }
@@ -107,7 +108,7 @@ public class Controller {
                     choice = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (NumberFormatException numberFormatException) {
-                    System.out.println("NumberFormatException");
+                    System.out.println("Number format wrong");
                 } catch (Exception exception) {
                     System.out.println("Exception");
                 }
@@ -155,7 +156,7 @@ public class Controller {
                     choice = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (NumberFormatException numberFormatException) {
-                    System.out.println("NumberFormatException");
+                    System.out.println("Number format wrong");
                 } catch (Exception exception) {
                     System.out.println("Exception");
                 }
@@ -200,7 +201,7 @@ public class Controller {
                     choice = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (NumberFormatException numberFormatException) {
-                    System.out.println("NumberFormatException");
+                    System.out.println("Number format wrong");
                 } catch (Exception exception) {
                     System.out.println("Exception");
                 }
@@ -249,7 +250,7 @@ public class Controller {
                     choice = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (NumberFormatException numberFormatException) {
-                    System.out.println("NumberFormatException");
+                    System.out.println("Number format wrong");
                 } catch (Exception exception) {
                     System.out.println("Exception");
                 }

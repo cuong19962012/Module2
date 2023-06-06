@@ -11,7 +11,6 @@ import java.util.List;
 
 public class CustomerRepository implements ICustomerRepository {
     private static final String PATH_CUSTOMER = "src/furuma_resort/utils/customer_file/customer.csv";
-    //    private static List<String> temp = new ArrayList<>();
     private static final List<Person> data = new ArrayList<>();
     private static final String COMMA = ",";
 

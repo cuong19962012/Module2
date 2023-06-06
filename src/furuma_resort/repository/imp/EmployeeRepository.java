@@ -11,8 +11,7 @@ import java.util.List;
 
 public class EmployeeRepository implements IEmployeeRepository {
     private static final String PATH_EMPLOYEE = "src/furuma_resort/utils/employee_file/employee.csv";
-    //    private static List<String> temp = new ArrayList<>();
-    private static List<Person> data = new ArrayList<>();
+    private static final List<Person> data = new ArrayList<>();
     private static final String COMMA = ",";
 
 //    static {

@@ -2,6 +2,7 @@ package furuma_resort.service.imp;
 
 import furuma_resort.model.person.Customer;
 import furuma_resort.model.person.Person;
+import furuma_resort.repository.ICustomerRepository;
 import furuma_resort.repository.imp.CustomerRepository;
 import furuma_resort.service.ICustomerService;
 
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CustomerService implements ICustomerService {
-    private static CustomerRepository customerRepository = new CustomerRepository();
+    private static ICustomerRepository customerRepository = new CustomerRepository();
     private static Scanner scanner = new Scanner(System.in);
 
     @Override
@@ -21,13 +22,13 @@ public class CustomerService implements ICustomerService {
         String id = scanner.nextLine();
         int index = customerRepository.check(id);
         if (index != -1) {
-            createEditCustomer(index);
+            customerRepository.edit(index, inputInfoEdit());
         } else {
             System.out.println("Can't find customer");
         }
     }
 
-    private static void createEditCustomer(int index) {
+    private static List<String> inputInfoEdit() {
         String idCustomer;
         do {
             System.out.println("Enter id ");
@@ -120,7 +121,7 @@ public class CustomerService implements ICustomerService {
         editCustomer.add(email);
         editCustomer.add(typeCustomer);
         editCustomer.add(address);
-        customerRepository.edit(index, editCustomer);
+        return editCustomer;
     }
 
     @Override
@@ -160,14 +161,14 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void add() {
-        Person person = createAddCustomer();
+        Person person = inputInfoNewAdd();
         if (customerRepository.add(person))
             System.out.println("Add success!");
         else
             System.out.println("Id duplicate!!!");
     }
 
-    private static Person createAddCustomer() {
+    private static Person inputInfoNewAdd() {
         String id;
         do {
             System.out.println("Enter id ");

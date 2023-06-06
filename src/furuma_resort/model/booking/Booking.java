@@ -5,7 +5,7 @@ import furuma_resort.model.person.Customer;
 
 import java.util.Objects;
 
-public class Booking implements Comparable<Booking> {
+public class Booking {
     private String idBooking;
     private String dateBooking;
     private String dateStart;
@@ -98,12 +98,4 @@ public class Booking implements Comparable<Booking> {
         return Objects.hash(getIdBooking());
     }
 
-
-    @Override
-    public int compareTo(Booking o) {
-        if (this.getDateStart().equals(o.getDateStart()))
-            return this.getDateEnd().compareTo(o.getDateEnd());
-        else
-            return this.getDateStart().compareTo(o.getDateStart());
-    }
 }

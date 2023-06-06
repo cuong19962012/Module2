@@ -2,17 +2,24 @@ package furuma_resort.repository.imp;
 
 import furuma_resort.model.booking.Booking;
 import furuma_resort.model.contact.Contact;
+import furuma_resort.repository.IBookingRepository;
 import furuma_resort.repository.IContactRepository;
+import furuma_resort.utils.comparator.ComparatorBooking;
 
 import java.util.*;
 
 public class ContactRepository implements IContactRepository {
-    private static List<Contact> data = new LinkedList<>();
-    private static BookingRepository bookingRepository = new BookingRepository();
-    private static Queue<Booking> dataBookingAfter = new PriorityQueue<>();
+    private static final List<Contact> data = new LinkedList<>();
+    private static final IBookingRepository bookingRepository = new BookingRepository();
+    private static final Queue<Booking> dataBookingAfter = new PriorityQueue<>(new Comparator<Booking>() {
+        @Override
+        public int compare(Booking o1, Booking o2) {
+            return 0;
+        }
+    });
 
     static {
-        Set<Booking> dataBooking = bookingRepository.getData();
+        Set<Booking> dataBooking=bookingRepository.getData();
         for (Booking b : dataBooking) {
             dataBookingAfter.offer(b);
         }

@@ -4,6 +4,7 @@ import furuma_resort.model.facility.Facility;
 import furuma_resort.model.facility.HouseForRent;
 import furuma_resort.model.facility.RoomForRent;
 import furuma_resort.model.facility.VillaForRent;
+import furuma_resort.repository.IFacilityRepository;
 import furuma_resort.repository.imp.FacilityRepository;
 import furuma_resort.service.IFacilityService;
 
@@ -12,13 +13,14 @@ import java.util.Scanner;
 
 public class FacilityService implements IFacilityService {
     private final Scanner scanner = new Scanner(System.in);
-    private final FacilityRepository facilityRepository = new FacilityRepository();
+    private final IFacilityRepository facilityRepository = new FacilityRepository();
 
     @Override
     public void displayListFacility() {
         Map<Facility, Integer> data = facilityRepository.getData();
         for (Facility facility : data.keySet()) {
-            System.out.println(facility + " Time of used: " + data.get(facility));
+            if(data.get(facility)<5)
+                System.out.println(facility + " Time of used: " + data.get(facility));
         }
     }
 
@@ -84,7 +86,7 @@ public class FacilityService implements IFacilityService {
         do {
             System.out.println("Enter id ");
             idFacility = scanner.nextLine();
-            if (idFacility.matches("^SVVL-[0-9]{4}$"))
+            if (idFacility.matches("^SVRO-[0-9]{4}$"))
                 break;
         } while (true);
         String nameFacility;
@@ -153,7 +155,7 @@ public class FacilityService implements IFacilityService {
         do {
             System.out.println("Enter id ");
             idFacility = scanner.nextLine();
-            if (idFacility.matches("^SVVL-[0-9]{4}$"))
+            if (idFacility.matches("^SVHO-[0-9]{4}$"))
                 break;
         } while (true);
         String nameFacility;

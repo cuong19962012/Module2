@@ -13,4 +13,6 @@ public interface IFacilityRepository {
 
     boolean check(String id);
 
+    void maintenance(Facility facility);
+
 }

@@ -2,17 +2,17 @@ package furuma_resort.service.imp;
 
 import furuma_resort.model.booking.Booking;
 import furuma_resort.model.contact.Contact;
+import furuma_resort.repository.IContactRepository;
 import furuma_resort.repository.imp.ContactRepository;
 import furuma_resort.service.IContactService;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class ContactService implements IContactService {
     private static Scanner scanner = new Scanner(System.in);
-    private static ContactRepository contactRepository = new ContactRepository();
+    private static IContactRepository contactRepository = new ContactRepository();
 
     @Override
     public void edit() {
