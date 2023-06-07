@@ -144,10 +144,12 @@ public class CustomerService implements ICustomerService {
     public void search() {
         System.out.println("Enter name for search: ");
         String searchName = scanner.nextLine();
-        Person customer = customerRepository.search(searchName);
-        if (customer != null)
-            System.out.println(customer);
-        else
+        List<Person> customers = customerRepository.search(searchName);
+        if (customers != null) {
+            for (Person c : customers) {
+                System.out.println(c);
+            }
+        } else
             System.out.println("Can't find customer");
     }
 

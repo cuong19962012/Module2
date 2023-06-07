@@ -22,13 +22,13 @@ public class EmployeeService implements IEmployeeService {
         String id = scanner.nextLine();
         int index = employeeRepository.check(id);
         if (index != -1) {
-            createEditEmployee(index);
+            employeeRepository.edit(index, createEditEmployee());
         } else {
             System.out.println("Can't find employee");
         }
     }
 
-    private static void createEditEmployee(int index) {
+    private static List<String> createEditEmployee() {
         String idEmployee;
         do {
             System.out.println("Enter id employee ");
@@ -110,19 +110,19 @@ public class EmployeeService implements IEmployeeService {
             literacy = scanner.nextLine();
             if (literacy.equals(""))
                 break;
-            if(literacy.equals("Vocational")||literacy.equals("College")||literacy.equals("University")||literacy.equals("Postgraduate"))
+            if (literacy.equals("Vocational") || literacy.equals("College") || literacy.equals("University") || literacy.equals("Postgraduate"))
                 break;
-        }while (true);
+        } while (true);
         String position;
         do {
             System.out.println("Enter position");
             position = scanner.nextLine();
-            if(position.equals(""))
+            if (position.equals(""))
                 break;
-            if(position.equals("Receptionist")||position.equals("Waiter")||position.equals("Expert")||position.equals("Supervisor")||position.equals("Manager")||position.equals("Director"))
+            if (position.equals("Receptionist") || position.equals("Waiter") || position.equals("Expert") || position.equals("Supervisor") || position.equals("Manager") || position.equals("Director"))
                 break;
-        }while (true);
-        Double salary=null;
+        } while (true);
+        Double salary = null;
         do {
             System.out.println("Enter salary");
             String strSalary = scanner.nextLine();
@@ -149,7 +149,7 @@ public class EmployeeService implements IEmployeeService {
         editEmployee.add(literacy);
         editEmployee.add(position);
         editEmployee.add(String.valueOf(salary));
-        employeeRepository.edit(index, editEmployee);
+        return editEmployee;
     }
 
     @Override
@@ -172,9 +172,9 @@ public class EmployeeService implements IEmployeeService {
     public void search() {
         System.out.println("Enter name for search: ");
         String searchName = scanner.nextLine();
-        Person employee = employeeRepository.search(searchName);
-        if (employee != null)
-            System.out.println(employee);
+        List<Person> employees = employeeRepository.search(searchName);
+        if (employees != null)
+            System.out.println(employees);
         else
             System.out.println("Can't find employee");
     }
@@ -266,16 +266,16 @@ public class EmployeeService implements IEmployeeService {
         do {
             System.out.println("Enter literacy");
             literacy = scanner.nextLine();
-            if(literacy.equals("Vocational")||literacy.equals("College")||literacy.equals("University")||literacy.equals("Postgraduate"))
+            if (literacy.equals("Vocational") || literacy.equals("College") || literacy.equals("University") || literacy.equals("Postgraduate"))
                 break;
-        }while (true);
+        } while (true);
         String position;
         do {
             System.out.println("Enter position");
             position = scanner.nextLine();
-            if(position.equals("Receptionist")||position.equals("Waiter")||position.equals("Expert")||position.equals("Supervisor")||position.equals("Manager")||position.equals("Director"))
+            if (position.equals("Receptionist") || position.equals("Waiter") || position.equals("Expert") || position.equals("Supervisor") || position.equals("Manager") || position.equals("Director"))
                 break;
-        }while (true);
+        } while (true);
         double salary;
         do {
             System.out.println("Enter salary");

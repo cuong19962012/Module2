@@ -13,5 +13,5 @@ public interface IEmployeeRepository extends IRepository <Person>{
     void edit(int index, List<String> editInfo);
     void delete(int index);
 
-    Person search(String searchName);
+    List<Person> search(String searchName);
 }

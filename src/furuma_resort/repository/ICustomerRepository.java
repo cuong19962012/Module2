@@ -11,6 +11,6 @@ public interface ICustomerRepository extends IRepository<Person> {
 
     void delete(int index);
 
-    Person search(String searchName);
+    List<Person> search(String searchName);
 
 }

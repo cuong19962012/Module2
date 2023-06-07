@@ -67,13 +67,17 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public Person search(String searchName) {
+    public List<Person> search(String searchName) {
         List<Person> list = display();
-        for (Person e : list) {
-            if (e.getName().equals(searchName))
-                return e;
+        List<Person> searchList = new ArrayList<>();
+        for (Person c : list) {
+            if ((c.getName().toLowerCase()).contains(searchName.toLowerCase()))
+                searchList.add(c);
         }
-        return null;
+        if (searchList.size() > 0)
+            return searchList;
+        else
+            return null;
     }
 
     @Override
