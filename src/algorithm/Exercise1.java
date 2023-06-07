@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Exercise1 {
     public static void main(String[] args) {
-        int[] inputArray = {1, 2, 2, 3, 1, 3, 1, 3};
+        int[] inputArray = {1, 2, 2, 1};
         Map<Integer, Integer> map = new HashMap<>();
         for (Integer e : inputArray) {
             if (map.containsKey(e))

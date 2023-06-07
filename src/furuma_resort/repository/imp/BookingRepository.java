@@ -12,9 +12,9 @@ import furuma_resort.utils.comparator.ComparatorBooking;
 import java.util.*;
 
 public class BookingRepository implements IBookingRepository {
-    private static  Set<Booking> data = new TreeSet<>(new ComparatorBooking());
-    private static ICustomerRepository customerRepository = new CustomerRepository();
-    private static IFacilityRepository facilityRepository = new FacilityRepository();
+    private static final Set<Booking> data = new TreeSet<>(new ComparatorBooking());
+    private static final ICustomerRepository customerRepository = new CustomerRepository();
+    private static final IFacilityRepository facilityRepository = new FacilityRepository();
 
     static {
         List<Person> dataCustomer = customerRepository.display();
@@ -26,8 +26,8 @@ public class BookingRepository implements IBookingRepository {
         }
         //String idBooking, String dateBooking, String dateStart, String dateEnd, Customer idCustomer, String idService
         Booking booking1 = new Booking("BK-1111", "24-12-2023", "25-12-2022", "26-12-2022", customer1, listFacility.get(0));
-        Booking booking2 = new Booking("BK-2222", "24-12-2023", "25-12-2022", "28-12-2022", customer1, listFacility.get(0));
-        Booking booking3 = new Booking("BK-3333", "24-12-2023", "25-12-2023", "30-12-2023", customer1, listFacility.get(0));
+        Booking booking2 = new Booking("BK-2222", "24-12-2023", "25-12-2022", "26-12-2022", customer1, listFacility.get(0));
+        Booking booking3 = new Booking("BK-3333", "24-12-2023", "25-12-2023", "26-12-2022", customer1, listFacility.get(0));
         data.add(booking1);
         data.add(booking2);
         data.add(booking3);

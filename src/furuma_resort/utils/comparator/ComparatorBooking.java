@@ -23,7 +23,10 @@ public class ComparatorBooking implements Comparator<Booking> {
             System.out.println("Runtime exception");
         }
         if (o2Start.equals(o1Start))
-            return o2End.compareTo(o1End);
+            if(o2End.equals(o1End))
+                return o2.getIdBooking().compareTo(o1.getIdBooking());
+            else
+                return o2End.compareTo(o1End);
         else
             return o2Start.compareTo(o1Start);
     }
